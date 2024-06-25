@@ -1,0 +1,25 @@
+.card {
+  width: 190px;
+  display: flex;
+
+  flex-direction: column;
+
+  overflow: hidden;
+
+  .logo {
+    filter: invert(1);
+  }
+}
+
+h3 {
+  margin: 0;
+}
+
+.cardText {
+  padding: 13px;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: black;
+}

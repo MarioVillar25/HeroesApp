@@ -1,7 +1,5 @@
 import { Routes } from '@angular/router';
 import { LayoutComponent } from './layout/layout.component';
-import { HeroListComponent } from './pages/hero-list/hero-list.component';
-import { HeroFavouritesComponent } from './pages/hero-favourites/hero-favourites.component';
 
 export const routes: Routes = [
   {
