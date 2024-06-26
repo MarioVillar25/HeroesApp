@@ -15,9 +15,11 @@ import { SearcherComponent } from '../../components/searcher/searcher.component'
 })
 export class HeroListComponent implements OnInit {
   public heroes: Heroes[] = [];
-  public inputValue: string = "";
+  public inputValue: string = '';
 
   constructor(private heroesService: HeroesService) {}
+
+  //Para obtener TODOS los héroes
 
   getAllHeroes(): void {
     this.heroesService.getAllHeroes().subscribe((heroes) => {
@@ -26,12 +28,16 @@ export class HeroListComponent implements OnInit {
     });
   }
 
+  //Para obtener el Héroe por Query
+
   getHeroByQuery(heroesFiltered: Heroes[]): void {
     this.heroes = heroesFiltered;
     console.log('this.heroesFiltered', this.heroes);
   }
 
-  getInputValue(value:string): void{
+  //Para obtener el valor del Input del SearchBox
+
+  getInputValue(value: string): void {
     this.inputValue = value;
   }
 

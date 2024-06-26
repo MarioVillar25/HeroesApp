@@ -32,12 +32,21 @@ export class SearcherComponent {
     const newTag = this.tagInput.nativeElement.value;
     console.log('newTag', newTag);
 
-    //Llamamos al servicio para meter newTag al array vacío de _tagsHistory
-    this.heroesService.getHeroByQuery(newTag).subscribe((heroesFilt) => {
-      console.log('heroesFiltered', heroesFilt);
-      this.emisionValorInput.emit(newTag);
-      this.emisionHeroes.emit(heroesFilt.data.results);
-    });
+    //Metemos condición: Si el string está vacío
+    //Volvemos a llamar a todos los héroes
+
+    if (newTag === '') {
+      this.heroesService.getAllHeroes().subscribe((heroes) => {
+        this.emisionHeroes.emit(heroes.data.results);
+      });
+    } else {
+      //Llamamos al servicio para meter newTag al array vacío de _tagsHistory
+      this.heroesService.getHeroByQuery(newTag).subscribe((heroesFilt) => {
+        console.log('heroesFiltered', heroesFilt);
+        this.emisionValorInput.emit(newTag);
+        this.emisionHeroes.emit(heroesFilt.data.results);
+      });
+    }
 
     //reseteamos el valor del input
     this.tagInput.nativeElement.value = '';

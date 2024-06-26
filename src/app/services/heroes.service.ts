@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Character } from '../interfaces/character.interface';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, catchError, of } from 'rxjs';
+import { ComicsData } from '../interfaces/comics.interface';
 
 @Injectable({
   providedIn: 'root',
@@ -16,19 +17,33 @@ export class HeroesService {
 
   public heroes: Character[] = [];
 
-
   constructor(private http: HttpClient) {}
 
   getAllHeroes(): Observable<Character> {
     return this.http.get<Character>(
-      `${this.baseURL}/v1/public/characters?${this.testURL}`
+      `${this.baseURL}/v1/public/characters?limit=50&${this.testURL}`
     );
   }
 
-  getHeroByQuery(query:string): Observable<Character>{
+  getHeroByQuery(query: string): Observable<Character> {
     return this.http.get<Character>(
       `${this.baseURL}/v1/public/characters?name=${query}&${this.testURL}`
-    );  }
+    );
+  }
 
+  getHeroById(id: string): Observable<Character | undefined> {
+    return this.http
+      .get<Character>(
+        `${this.baseURL}/v1/public/characters/${id}?${this.testURL}`
+      )
+      .pipe(catchError((error) => of(undefined)));
+  }
 
+  getComicsByHeroId(id:string){
+    return this.http
+    .get<ComicsData>(
+      `${this.baseURL}/v1/public/characters/${id}/comics?${this.testURL}`
+    )
+    .pipe(catchError((error) => of(undefined)));
+  }
 }
