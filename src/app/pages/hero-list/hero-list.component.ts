@@ -23,8 +23,10 @@ export class HeroListComponent implements OnInit {
 
   getAllHeroes(): void {
     this.heroesService.getAllHeroes().subscribe((heroes) => {
+
       this.heroes = heroes.data.results;
-      console.log('this.heroes', this.heroes);
+      console.log(this.heroes);
+
     });
   }
 

@@ -1,13 +1,39 @@
+<!-- [routerLink]="['/hero-page', hero.id]"
+ -->
+
+<div class="card">
+  <img
+    class="imageCard"
+    src="{{ hero.thumbnail.path }}.{{ hero.thumbnail.extension }}"
+    alt="image"
+    width="250px"
+    height="250px"
+  />
+  <div class="cardText">
+    <h5>{{ hero.name }}</h5>
+    <ng-container>
+      <img
+        (click)="changeLikeState()"
+        class="logo"
+        src="../../../assets/heart.png"
+        alt="dsaf"
+        width="15px"
+      />
+    </ng-container>
 
 
 
+    <ng-template #other>
+      <img
+        (click)="changeLikeState()"
+        class="logo"
+        src="../../../assets/red_heart.png"
+        alt="dsaf"
+        width="15px"
+      />
+    </ng-template>
 
-  <div [routerLink]="['/hero-page', hero.id]" class="card">
-    <img src='{{hero.thumbnail.path}}.{{hero.thumbnail.extension}}' alt="image" width="190px" height="200px" />
-    <div class="cardText">
-      <h5>{{hero.name}}</h5>
-      <img class="logo" src="../../../assets/heart.png" alt="dsaf" width="15px">
-    </div>
+
+
   </div>
-
-
+</div>

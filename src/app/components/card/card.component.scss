@@ -1,12 +1,16 @@
 .card {
-  width: 190px;
+  width: 250px;
+  height: 360px;
+
   display: flex;
-
   flex-direction: column;
-
+  justify-content: center;
+  background-color: black;
   overflow: hidden;
 
-
+  .imageCard {
+    height: 80%;
+  }
 }
 
 h3 {
@@ -14,10 +18,10 @@ h3 {
 }
 
 .cardText {
+  height: 20%;
   padding: 13px;
   color: white;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: black;
 }

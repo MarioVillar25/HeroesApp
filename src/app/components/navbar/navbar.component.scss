@@ -4,9 +4,14 @@ nav{
 
   display: flex;
   justify-content: space-between;
+  align-items: center;
 
   background-color: black;
   color: white;
-  padding: 1vh 3vw;
+  padding: 3vh 3vw;
+}
+
+span{
+  margin-left: 10px;
 }
 
