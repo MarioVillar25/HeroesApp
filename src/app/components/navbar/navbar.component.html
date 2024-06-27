@@ -7,14 +7,19 @@
     height="50px"
   />
   <div>
-    <img
+    <ng-container *ngIf="likedHeroesLength === 0; else NavbarRedHeart">
+      <img src="../../../assets/heart.png" alt="" width="25px" height="25px" />
+    </ng-container>
 
-    src="../../../assets/red_heart.png"
-    alt=""
-    width="25px"
-    height="25px"
-  />
-  <span>5</span>
+    <ng-template #NavbarRedHeart>
+      <img
+        src="../../../assets/red_heart.png"
+        alt=""
+        width="25px"
+        height="25px"
+      />
+    </ng-template>
+
+    <span>{{ likedHeroesLength }}</span>
   </div>
-
 </nav>

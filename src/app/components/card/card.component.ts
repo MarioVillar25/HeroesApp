@@ -17,18 +17,44 @@ export class CardComponent {
   constructor(private heroesService: HeroesService) {}
 
   changeLikeState(): void {
-
-
-    console.log('this.hero.id', this.hero.id);
-
     if (this.heroesService.likedHeroes.length === 0) {
       this.heroesService.likedHeroes.push(this.hero);
-    }
-    console.log("this.heroesService.likedHeroes[0].id", this.heroesService.likedHeroes[0].id);
+      console.log('primer paso');
+    } else {
+      console.log('this.hero.id', this.hero.id);
 
+      if (
+        this.heroesService.likedHeroes.every(
+          (elem) => elem.id !== this.hero.id
+        ) === true
+      ) {
+        //Meteme ese elemento del array
+
+        this.heroesService.likedHeroes.push(this.hero);
+      } else {
+        //eliminame ese elemento del array
+
+        let index = this.heroesService.likedHeroes.findIndex(
+          (elem) => elem.id === this.hero.id
+        );
+        this.heroesService.likedHeroes.splice(index, 1);
+      }
+    }
 
     console.log('array heroes likeados', this.heroesService.likedHeroes);
 
     console.log('-------------------------------');
+  }
+
+  checkColorLike(value: number): boolean {
+    if (
+      this.heroesService.likedHeroes.every(
+        (elem) => elem.id !== value
+      ) === true
+    ) {
+      return true;
+    } else {
+      return false;
+    }
   }
 }
