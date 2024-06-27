@@ -3,7 +3,7 @@
 
 <div class="card">
   <img
-  [routerLink]="['/hero-page', hero.id]"
+    [routerLink]="['/hero-page', hero.id]"
     class="imageCard"
     src="{{ hero.thumbnail.path }}.{{ hero.thumbnail.extension }}"
     alt="image"
@@ -12,29 +12,22 @@
   />
   <div class="cardText">
     <h5>{{ hero.name }}</h5>
-    <ng-container *ngIf="checkColorLike(hero.id);else other">
+    <ng-container *ngIf="checkColorLike(); else CardRedHeart">
       <img
-        (click)="changeLikeState()"
-        class="logo"
+        (click)="changeLikedHeroes()"
         src="../../../assets/heart.png"
         alt="dsaf"
         width="15px"
       />
     </ng-container>
 
-
-
-    <ng-template #other>
+    <ng-template #CardRedHeart>
       <img
-        (click)="changeLikeState()"
-        class="logo"
+        (click)="changeLikedHeroes()"
         src="../../../assets/red_heart.png"
         alt="dsaf"
         width="15px"
       />
     </ng-template>
-
-
-
   </div>
 </div>

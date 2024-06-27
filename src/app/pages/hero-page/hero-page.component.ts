@@ -24,30 +24,37 @@ export class HeroPageComponent implements OnInit {
   ) {}
 
   //Función para llamar a la info de Hero por Id
-  reclaimHeroById(): void {
+  public reclaimHeroById(): void {
     //usamos el activatedRoute para reclamar el id por params
     this.activatedRoute.params
       .pipe(switchMap(({ id }) => this.heroesService.getHeroById(id)))
       .subscribe((heroById) => {
-        if (!heroById) return this.router.navigate(['/heroes']);
-        console.log( "heroId",heroById.data.results[0]);
-         return (this.hero = heroById.data.results[0]);
+        if (!heroById) return this.router.navigate(['heroes']);
+        //console.log( "heroId",heroById.data.results[0]);
+        return (this.hero = heroById.data.results[0]);
       });
   }
 
-  reclaimComicsByHeroId():void {
+  public reclaimComicsByHeroId(): void {
     this.activatedRoute.params
       .pipe(switchMap(({ id }) => this.heroesService.getComicsByHeroId(id)))
       .subscribe((comics) => {
         if (!comics) return this.router.navigate(['/heroes']);
-        console.log( "comics",comics.data.results);
+        //console.log( "comics",comics.data.results);
 
-         return this.comics = comics.data.results;
+        return (this.comics = comics.data.results);
       });
-
   }
 
-  ngOnInit(): void {
+  public changeLikedHeroes(): void {
+    this.heroesService.changeLikedHeroes(this.hero, this.hero.id);
+  }
+
+  public checkColorLike(): boolean {
+   return this.heroesService.checkColorLike(this.hero.id);
+  }
+
+  public ngOnInit(): void {
     this.reclaimHeroById();
     this.reclaimComicsByHeroId();
   }

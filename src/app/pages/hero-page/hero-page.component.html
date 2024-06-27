@@ -1,15 +1,38 @@
-<section class="heroInfo">
+<section *ngIf="hero" class="heroInfo">
   <img
-    src="{{hero.thumbnail.path}}.{{hero.thumbnail.extension}}"
+    src="{{ hero.thumbnail.path }}.{{ hero.thumbnail.extension }}"
     alt="image"
     width="200px"
     height="200px"
   />
 
+
   <div class="info">
     <div class="title">
       <h2>{{ hero.name }}</h2>
-      <img src="../../../assets/heart.png" alt="" width="20px" />
+
+
+      <ng-container *ngIf="checkColorLike();else RedHeartHeroPage">
+        <img
+          (click)="changeLikedHeroes()"
+          src="../../../assets/heart.png"
+          alt=""
+          width="20px"
+        />
+      </ng-container>
+
+
+
+      <ng-template #RedHeartHeroPage>
+        <img
+          (click)="changeLikedHeroes()"
+          src="../../../assets/red_heart.png"
+          alt=""
+          width="20px"
+        />
+      </ng-template>
+
+
     </div>
 
     <p>

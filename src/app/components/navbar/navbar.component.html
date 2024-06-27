@@ -1,12 +1,13 @@
 <nav>
   <img
-    routerLink="/heroes"
+    routerLink="heroes"
     src="../../../assets/Marvel_Logo.png"
     alt="marvelLogo"
     width="100px"
     height="50px"
   />
-  <div>
+  <div     routerLink="favourites"
+  >
     <ng-container *ngIf="likedHeroesLength === 0; else NavbarRedHeart">
       <img src="../../../assets/heart.png" alt="" width="25px" height="25px" />
     </ng-container>

@@ -16,6 +16,9 @@ export class CardComponent {
 
   constructor(private heroesService: HeroesService) {}
 
+
+  //Copia Funciones
+/*
   changeLikeState(): void {
     if (this.heroesService.likedHeroes.length === 0) {
       this.heroesService.likedHeroes.push(this.hero);
@@ -57,4 +60,14 @@ export class CardComponent {
       return false;
     }
   }
+ */
+
+  changeLikedHeroes():void{
+   this.heroesService.changeLikedHeroes(this.hero, this.hero.id)
+  }
+
+  checkColorLike():boolean{
+    return this.heroesService.checkColorLike(this.hero.id)
+  }
+
 }

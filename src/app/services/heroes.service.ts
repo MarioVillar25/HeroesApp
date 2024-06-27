@@ -18,20 +18,14 @@ export class HeroesService {
 
   public baseURL: string = 'https://gateway.marvel.com';
 
-
-
-
   //Estado para los likes
 
   public likeState: boolean = false;
 
 
-
   //Array de los Heroes likeados.
 
   public likedHeroes: Heroes[] = []; //Heroes[]???
-
-
 
 
   constructor(private http: HttpClient) {}
@@ -50,7 +44,7 @@ export class HeroesService {
     );
   }
 
-  getHeroById(id: string): Observable<Character | undefined> {
+  public getHeroById(id: string): Observable<Character | undefined> {
     return this.http
       .get<Character>(
         `${this.baseURL}/v1/public/characters/${id}?${this.testURL}`
@@ -70,6 +64,48 @@ export class HeroesService {
 
   changeLikeState(value:boolean){
    return value = !value;
+  }
+
+  changeLikedHeroes(hero:Heroes, id:number): void {
+    if (this.likedHeroes.length === 0) {
+      this.likedHeroes.push(hero);
+      console.log('primer paso');
+    } else {
+      console.log('this.hero.id', id);
+
+      if (
+        this.likedHeroes.every(
+          (elem) => elem.id !== id
+        ) === true
+      ) {
+        //Meteme ese elemento del array
+
+        this.likedHeroes.push(hero);
+      } else {
+        //eliminame ese elemento del array
+
+        let index = this.likedHeroes.findIndex(
+          (elem) => elem.id === id
+        );
+        this.likedHeroes.splice(index, 1);
+      }
+    }
+
+    console.log('array heroes likeados', this.likedHeroes);
+
+    console.log('-------------------------------');
+  }
+
+  checkColorLike(value: number): boolean {
+    if (
+      this.likedHeroes.every(
+        (elem) => elem.id !== value
+      ) === true
+    ) {
+      return true;
+    } else {
+      return false;
+    }
   }
 
 
