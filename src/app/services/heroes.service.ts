@@ -69,9 +69,9 @@ export class HeroesService {
   changeLikedHeroes(hero:Heroes, id:number): void {
     if (this.likedHeroes.length === 0) {
       this.likedHeroes.push(hero);
-      console.log('primer paso');
+      //console.log('primer paso');
     } else {
-      console.log('this.hero.id', id);
+      //console.log('this.hero.id', id);
 
       if (
         this.likedHeroes.every(
@@ -91,9 +91,9 @@ export class HeroesService {
       }
     }
 
-    console.log('array heroes likeados', this.likedHeroes);
+    //console.log('array heroes likeados', this.likedHeroes);
 
-    console.log('-------------------------------');
+    //console.log('-------------------------------');
   }
 
   checkColorLike(value: number): boolean {

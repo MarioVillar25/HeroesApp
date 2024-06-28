@@ -5,7 +5,6 @@ import { CardComponent } from '../../components/card/card.component';
 import { HttpClientModule } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 import { SearcherComponent } from '../../components/searcher/searcher.component';
-import { map } from 'rxjs';
 
 @Component({
   selector: 'app-hero-favourites',
@@ -36,7 +35,6 @@ export class HeroFavouritesComponent implements OnInit {
 
   public getInputValue(value: string): void {
     this.inputValue = value;
-    //TODO: Meter esta función en el servicio
   }
 
   public ngOnInit(): void {
