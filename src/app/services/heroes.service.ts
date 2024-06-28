@@ -9,11 +9,8 @@ import { ComicsData } from '../interfaces/comics.interface';
 })
 export class HeroesService {
   //TODO: meter en environments
-  //public keyPublic: string = '7b8a712b1fe2407b75c2cf1b7ca3d9b5';
-  //private keyPrivate: string = 'e5d22438d3f21e719eeb9b840f6f0961b26b72f2';
-  //private hash: string = '04d6f9bd92df8e4f6f1ef343a695d4bf';
 
-  public testURL: string =
+  public finalURL: string =
     'ts=1719221103905&apikey=7b8a712b1fe2407b75c2cf1b7ca3d9b5&hash=04d6f9bd92df8e4f6f1ef343a695d4bf';
 
   public baseURL: string = 'https://gateway.marvel.com';
@@ -22,91 +19,101 @@ export class HeroesService {
 
   public likeState: boolean = false;
 
-
   //Array de los Heroes likeados.
 
-  public likedHeroes: Heroes[] = []; //Heroes[]???
-
+  public likedHeroes: Heroes[] = [];
 
   constructor(private http: HttpClient) {}
 
-  //Funciones para llamar a la API
+  //Para obtener todos los héroes
 
-  getAllHeroes(): Observable<Character> {
+  public getAllHeroes(): Observable<Character> {
     return this.http.get<Character>(
-      `${this.baseURL}/v1/public/characters?limit=50&${this.testURL}`
+      `${this.baseURL}/v1/public/characters?limit=50&${this.finalURL}`
     );
   }
 
-  getHeroByQuery(query: string): Observable<Character> {
+  //Para obtener héroe por nombre
+
+  public getHeroByQuery(query: string): Observable<Character> {
     return this.http.get<Character>(
-      `${this.baseURL}/v1/public/characters?name=${query}&${this.testURL}`
+      `${this.baseURL}/v1/public/characters?name=${query}&${this.finalURL}`
     );
   }
+
+  //Para obtener héroe por id
 
   public getHeroById(id: string): Observable<Character | undefined> {
     return this.http
       .get<Character>(
-        `${this.baseURL}/v1/public/characters/${id}?${this.testURL}`
+        `${this.baseURL}/v1/public/characters/${id}?${this.finalURL}`
       )
       .pipe(catchError((error) => of(undefined)));
   }
 
-  getComicsByHeroId(id: string) {
+  //Para obtener comics por id de un héroe determinado
+
+  public getComicsByHeroId(id: string) {
     return this.http
       .get<ComicsData>(
-        `${this.baseURL}/v1/public/characters/${id}/comics?${this.testURL}`
+        `${this.baseURL}/v1/public/characters/${id}/comics?${this.finalURL}`
       )
       .pipe(catchError((error) => of(undefined)));
   }
 
-  //Funciones para el Sistema de Likes
+  //* FUNCIONES PARA EL SISTEMA DE LIKES
 
-  changeLikeState(value:boolean){
-   return value = !value;
+  //Para cambiar el estado del like
+  //? se está usando este método?
+
+  public changeLikeState(value: boolean) {
+    return (value = !value);
   }
 
-  changeLikedHeroes(hero:Heroes, id:number): void {
+  //Para dar like y dislike a un héroe
+
+  public changeLikedHeroes(hero: Heroes, id: number): void {
     if (this.likedHeroes.length === 0) {
       this.likedHeroes.push(hero);
-      //console.log('primer paso');
     } else {
-      //console.log('this.hero.id', id);
-
-      if (
-        this.likedHeroes.every(
-          (elem) => elem.id !== id
-        ) === true
-      ) {
+      if (this.likedHeroes.every((elem) => elem.id !== id) === true) {
         //Meteme ese elemento del array
-
         this.likedHeroes.push(hero);
+        localStorage.setItem('LikedHeroes', JSON.stringify(this.likedHeroes))
       } else {
         //eliminame ese elemento del array
 
-        let index = this.likedHeroes.findIndex(
-          (elem) => elem.id === id
-        );
+        let index = this.likedHeroes.findIndex((elem) => elem.id === id);
         this.likedHeroes.splice(index, 1);
+        localStorage.setItem('LikedHeroes', JSON.stringify(this.likedHeroes))
+
       }
     }
-
-    //console.log('array heroes likeados', this.likedHeroes);
-
-    //console.log('-------------------------------');
   }
 
-  checkColorLike(value: number): boolean {
-    if (
-      this.likedHeroes.every(
-        (elem) => elem.id !== value
-      ) === true
-    ) {
+  //para poder cambiar el color del corazón
+
+  public checkColorLike(value: number): boolean {
+    if (this.likedHeroes.every((elem) => elem.id !== value) === true) {
       return true;
     } else {
       return false;
     }
   }
+
+
+  //Load Local Storage
+
+  loadLocalStorage():void{
+
+    localStorage.getItem("LikedHeroes");
+
+  }
+
+
+
+
+
 
 
 }

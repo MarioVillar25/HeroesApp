@@ -6,6 +6,7 @@
   <app-searcher
     (emisionHeroes)="getHeroByQuery($event)"
     (emisionValorInput)="getInputValue($event)"
+    (emisionLikedHeroes)="reloadFavorites($event)"
   ></app-searcher>
 
   <p>Results: {{ likedHeroes.length }}</p>
@@ -14,10 +15,10 @@
   </span>
 </div>
 
-
-
 <section>
   <div class="cards-list">
     <app-card [hero]="hero" *ngFor="let hero of likedHeroes"></app-card>
   </div>
 </section>
+
+

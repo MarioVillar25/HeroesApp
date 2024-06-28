@@ -19,11 +19,17 @@ export class HeroFavouritesComponent implements OnInit {
 
   constructor(private heroesService: HeroesService) {}
 
+  public ngOnInit(): void {
+    this.getAllLikedHeroes();
+  }
+
+  //Para obtener todos los heroes favoritos
+
   public getAllLikedHeroes(): void {
     this.likedHeroes = this.heroesService.likedHeroes;
   }
 
-  //Para obtener el Héroe por Query
+  //Para obtener el Héroe por Nombre
 
   public getHeroByQuery(heroesFiltered: Heroes[]): void {
     this.likedHeroes = heroesFiltered;
@@ -37,7 +43,10 @@ export class HeroFavouritesComponent implements OnInit {
     this.inputValue = value;
   }
 
-  public ngOnInit(): void {
-    this.getAllLikedHeroes();
+  //Para actualizar el valor de heroes favoritos y recargar el array
+  //en el componente de hero-favourites
+
+  public reloadFavorites(value: Heroes[]): void {
+    this.likedHeroes = value;
   }
 }

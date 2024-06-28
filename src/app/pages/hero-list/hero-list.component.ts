@@ -19,30 +19,33 @@ export class HeroListComponent implements OnInit {
 
   constructor(private heroesService: HeroesService) {}
 
+  public ngOnInit(): void {
+    this.getAllHeroes();
+    this.heroesService.loadLocalStorage();
+  }
+
   //Para obtener TODOS los héroes
 
-  getAllHeroes(): void {
+  public getAllHeroes(): void {
     this.heroesService.getAllHeroes().subscribe((heroes) => {
-
       this.heroes = heroes.data.results;
-
     });
   }
 
   //Para obtener el Héroe por Query
 
-  getHeroByQuery(heroesFiltered: Heroes[]): void {
+  public getHeroByQuery(heroesFiltered: Heroes[]): void {
     this.heroes = heroesFiltered;
     console.log('this.heroesFiltered', this.heroes);
   }
 
   //Para obtener el valor del Input del SearchBox
 
-  getInputValue(value: string): void {
-    this.inputValue = value;
-  }
+  //TODO: NgModel para mostrar el input en el HTML
+  //desde el hijo se hace el [NgModel] = variable.
+  //Se pone en el input del HTML
 
-  ngOnInit(): void {
-    this.getAllHeroes();
+  public getInputValue(value: string): void {
+    this.inputValue = value;
   }
 }
