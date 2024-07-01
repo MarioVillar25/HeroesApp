@@ -57,5 +57,7 @@ export class HeroPageComponent implements OnInit {
   public ngOnInit(): void {
     this.reclaimHeroById();
     this.reclaimComicsByHeroId();
+    this.heroesService.loadLocalStorage();
+    this.checkColorLike()
   }
 }

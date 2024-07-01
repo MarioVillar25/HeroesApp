@@ -79,14 +79,13 @@ export class HeroesService {
       if (this.likedHeroes.every((elem) => elem.id !== id) === true) {
         //Meteme ese elemento del array
         this.likedHeroes.push(hero);
-        localStorage.setItem('LikedHeroes', JSON.stringify(this.likedHeroes))
+        localStorage.setItem('LikedHeroes', JSON.stringify(this.likedHeroes));
       } else {
         //eliminame ese elemento del array
 
         let index = this.likedHeroes.findIndex((elem) => elem.id === id);
         this.likedHeroes.splice(index, 1);
-        localStorage.setItem('LikedHeroes', JSON.stringify(this.likedHeroes))
-
+        localStorage.setItem('LikedHeroes', JSON.stringify(this.likedHeroes));
       }
     }
   }
@@ -101,19 +100,9 @@ export class HeroesService {
     }
   }
 
-
   //Load Local Storage
 
-  loadLocalStorage():void{
-
-    localStorage.getItem("LikedHeroes");
-
+  loadLocalStorage(): void {
+    this.likedHeroes = JSON.parse(localStorage.getItem('LikedHeroes')!);
   }
-
-
-
-
-
-
-
 }

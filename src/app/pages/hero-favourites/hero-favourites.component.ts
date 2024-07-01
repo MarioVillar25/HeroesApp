@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { Heroes } from '../../interfaces/character.interface';
 import { HeroesService } from '../../services/heroes.service';
 import { CardComponent } from '../../components/card/card.component';
@@ -14,13 +14,31 @@ import { SearcherComponent } from '../../components/searcher/searcher.component'
   styleUrl: './hero-favourites.component.scss',
 })
 export class HeroFavouritesComponent implements OnInit {
-  public likedHeroes: Heroes[] = [];
+  public likedHeroes: Heroes[] = this.heroesService.likedHeroes;
   public inputValue: string = '';
 
   constructor(private heroesService: HeroesService) {}
 
   public ngOnInit(): void {
     this.getAllLikedHeroes();
+    this.loadFavouritesLocalStorage();
+  }
+
+  //Empleo un getter de los heroes likeados del servicio
+
+  public get heroesLikeados(): Heroes[] {
+    return this.heroesService.likedHeroes;
+  }
+
+  //Para recargar valores del array de favoritos en este componente:
+
+  public loadFavouritesLocalStorage(): void {
+    //Primero rellenamos el array de heroes favoritos del servicio.
+    this.heroesService.loadLocalStorage();
+    //Después rellenamos el array de heroes de este componente con el LocalStorage
+    this.likedHeroes = this.heroesService.likedHeroes;
+    //De esa forma mantenemos la persistencia de likes en este componente
+    //al recargarlo.
   }
 
   //Para obtener todos los heroes favoritos
@@ -34,7 +52,6 @@ export class HeroFavouritesComponent implements OnInit {
   public getHeroByQuery(heroesFiltered: Heroes[]): void {
     this.likedHeroes = heroesFiltered;
     console.log('this.heroesFiltered', this.likedHeroes);
-    //TODO: Asegurarse que solamente busca entre los favoritos
   }
 
   //Para obtener el valor del Input del SearchBox
@@ -47,6 +64,8 @@ export class HeroFavouritesComponent implements OnInit {
   //en el componente de hero-favourites
 
   public reloadFavorites(value: Heroes[]): void {
+    localStorage.setItem('valor', JSON.stringify(value));
+
     this.likedHeroes = value;
   }
 }
