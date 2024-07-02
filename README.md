@@ -1,27 +1,49 @@
-# Heroes
+# Marvel Heroes App
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.3.7.
+This project is an application developed in Angular 17 that provides a list of Marvel heroes. The application displays 50 hero cards on the main page. Each card allows access to detailed information about the hero, including the comics in which they have appeared.
 
-## Development server
+## Features
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+- **Landing Page**: Displays 50 hero cards with basic information.
+- **Detailed Information**: Clicking on a card provides detailed information about the hero and related comics.
+- **Likes and Favorites**: Users can "like" heroes and access a list of favorite heroes.
+- **Modular Structure**: The application is organized into folders to facilitate maintenance and scalability.
 
-## Code scaffolding
+## Folder Structure
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+The project folder structure is as follows:
 
-## Build
+- `src/app`
+  - `pages/` : Contains the main pages of the application.
+  - `components/` : Contains reusable components.
+  - `layout/` : Contains components related to the application's layout (e.g., header, footer).
+  - `guards/` : Contains Angular guards for navigation.
+  - `services/` : Contains the application's services to handle business logic and API calls.
+  - `utils/` : Contains utilities and helper functions.
+  - `environments/` : Contains configuration files for different environments (e.g., development, production).
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+## Installation
 
-## Running unit tests
+To clone and run this application, follow these steps:
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+1. Clone this repository into a folder where you want to save the project:
+    ```bash
+    git clone https://github.com/MarioVillar25/HeroesApp.git
+    ```
 
-## Running end-to-end tests
+2. Navigate to the project directory:
+    ```bash
+    cd projectFolderName
+    ```
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+3. Install the project dependencies:
+    ```bash
+    npm install
+    ```
 
-## Further help
+## Usage
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+To run the application in a development environment, use the following command:
+```bash
+ng serve
+
