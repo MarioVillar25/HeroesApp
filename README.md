@@ -1,48 +1,49 @@
 # Marvel Heroes App
 
-Este proyecto es una aplicación desarrollada en Angular 17 que proporciona un listado de héroes de Marvel. La aplicación muestra 50 tarjetas de héroes en la página principal. Cada tarjeta permite acceder a la información detallada del héroe, incluyendo los cómics en los que ha aparecido.
+This project is an application developed in Angular 17 that provides a list of Marvel heroes. The application displays 50 hero cards on the main page. Each card allows access to detailed information about the hero, including the comics in which they have appeared.
 
-## Características
+## Features
 
-- **Landing Page**: Muestra 50 tarjetas de héroes con información básica.
-- **Información Detallada**: Al hacer clic en una tarjeta, se accede a la información detallada del héroe y a los cómics relacionados.
-- **Likes y Favoritos**: Los usuarios pueden dar "likes" a los héroes y acceder a un listado de héroes favoritos.
-- **Estructura Modular**: La aplicación está organizada en carpetas para facilitar su mantenimiento y escalabilidad.
+- **Landing Page**: Displays 50 hero cards with basic information.
+- **Detailed Information**: Clicking on a card provides detailed information about the hero and related comics.
+- **Likes and Favorites**: Users can "like" heroes and access a list of favorite heroes.
+- **Modular Structure**: The application is organized into folders to facilitate maintenance and scalability.
 
-## Estructura de Carpetas
+## Folder Structure
 
-La estructura de carpetas del proyecto es la siguiente:
+The project folder structure is as follows:
 
 - `src/app`
-  - `pages/` : Contiene las páginas principales de la aplicación.
-  - `components/` : Contiene los componentes reutilizables.
-  - `layout/` : Contiene los componentes relacionados con la disposición de la aplicación (e.g., header, footer).
-  - `guards/` : Contiene los guards de Angular para la navegación.
-  - `services/` : Contiene los servicios de la aplicación para manejar la lógica de negocio y las llamadas a la API.
-  - `utils/` : Contiene utilidades y funciones auxiliares.
-  - `environments/` : Contiene los archivos de configuración para diferentes entornos (e.g., desarrollo, producción).
+  - `pages/` : Contains the main pages of the application.
+  - `components/` : Contains reusable components.
+  - `layout/` : Contains components related to the application's layout (e.g., header, footer).
+  - `guards/` : Contains Angular guards for navigation.
+  - `services/` : Contains the application's services to handle business logic and API calls.
+  - `utils/` : Contains utilities and helper functions.
+  - `environments/` : Contains configuration files for different environments (e.g., development, production).
 
-## Instalación
+## Installation
 
-Para clonar y ejecutar esta aplicación, sigue los siguientes pasos:
+To clone and run this application, follow these steps:
 
-1. Clona este repositorio en una carpeta donde quieras guardar el proyecto:
+1. Clone this repository into a folder where you want to save the project:
     ```bash
     git clone https://github.com/MarioVillar25/HeroesApp.git
     ```
 
-2. Navega al directorio del proyecto:
+2. Navigate to the project directory:
     ```bash
-    cd nomdreDeLaCarpeta
+    cd projectFolderName
     ```
 
-3. Instala las dependencias del proyecto:
+3. Install the project dependencies:
     ```bash
     npm install
     ```
 
-## Uso
+## Usage
 
-Para ejecutar la aplicación en un entorno de desarrollo, usa el siguiente comando:
+To run the application in a development environment, use the following command:
 ```bash
 ng serve
+
