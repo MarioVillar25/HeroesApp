@@ -1,10 +1,9 @@
 <ng-container *ngIf="hero">
   <section class="heroInfo">
-    <img
+    <img class="heroImage"
       src="{{ hero.thumbnail.path }}.{{ hero.thumbnail.extension }}"
       alt="image"
-      width="200px"
-      height="200px"
+
     />
 
     <div class="info">
@@ -15,7 +14,7 @@
             (click)="changeLikedHeroes()"
             src="../../../assets/heart.png"
             alt=""
-            width="20px"
+            width="25px"
           />
         </ng-container>
 
@@ -24,7 +23,7 @@
             (click)="changeLikedHeroes()"
             src="../../../assets/red_heart.png"
             alt=""
-            width="20px"
+            width="25px"
           />
         </ng-template>
       </div>
@@ -37,7 +36,7 @@
 
   <section class="comics">
     <h2>COMICS</h2>
-
+    <hr>
     <div class="carousel">
       <ul class="image-list">
         <ng-container *ngIf="comics">

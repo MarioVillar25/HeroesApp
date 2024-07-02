@@ -22,6 +22,15 @@ section {
   display: flex;
   background-color: black;
   color: white;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+
+
+  .heroImage{
+    width: 200px;
+    height: 200px;
+    //overflow: hidden;
+  }
+
 
   img {
     aspect-ratio: 1/1;
@@ -43,6 +52,7 @@ section {
       display: flex;
       justify-content: space-between;
       align-items: center;
+      gap: 40px;
 
     }
   }
@@ -97,4 +107,102 @@ ul::-webkit-scrollbar-track {
       }
     }
   }
+}
+
+
+/* Media queries */
+
+
+@media (width <= 960px){
+
+
+
+.heroInfo {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  background-color: black;
+  color: white;
+  //background-color: red;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+
+
+  .heroImage{
+    margin-top: 20px;
+    width: 300px;
+    height: 300px;
+    border: 2px solid white;
+    //overflow: hidden;
+  }
+
+
+
+  .info {
+    padding:20px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    p {
+      //text-align: center;
+margin-top: 10px;
+      //margin: 0;
+      font-size: 14px;
+    }
+
+    .title {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 40px;
+
+    }
+  }
+}
+
+
+.comics {
+  h2{
+    margin: 0;
+  }
+  padding: 4vh 10vw;
+  display: flex;
+  flex-direction: column;
+
+  .carousel {
+    max-width: 1200px;
+    width: 100%;
+
+    .image-list {
+      display: flex;
+      gap: 10px;
+      font-size: 0;
+      list-style: none;
+      margin-bottom: 30px;
+      overflow-x: auto;
+
+      .image-container {
+        display: flex;
+        flex-direction: column;
+        padding: 20px 5px;
+        color: black;
+
+        .image-item {
+          width: 325px;
+          height: 400px;
+          object-fit: cover;
+        }
+      }
+    }
+  }
+}
+
+
+
+
+
+
 }
