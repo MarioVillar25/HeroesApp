@@ -1,8 +1,17 @@
 section {
   padding: 4vh 0vw;
+  display: flex;
+  gap: 10px;
 
   input {
     width: 100%;
     padding: 7px;
+    border: none;
+    border-bottom: 1px solid black;
+  }
+
+  textarea:focus,
+  input:focus {
+    outline: none;
   }
 }

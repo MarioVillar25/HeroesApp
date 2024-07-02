@@ -17,7 +17,7 @@ section {
 
 .heroInfo {
   display: flex;
-  background-color: black;
+  background-color: var(--main--dark-color);
   color: white;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 
@@ -74,6 +74,11 @@ ul::-webkit-scrollbar-track {
   padding: 4vh 20vw;
   display: flex;
   flex-direction: column;
+
+  .comics-title {
+    margin: 0;
+    font-weight: 400;
+  }
 
   .carousel {
     max-width: 1200px;

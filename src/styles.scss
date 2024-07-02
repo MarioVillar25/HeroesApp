@@ -1,13 +1,17 @@
 /* You can add global styles to this file, and also import other style files */
 
+//Variables:
+
 :root {
-  font-family: sans-serif;
   line-height: 1.5;
   font-weight: 400;
+
+  --main--dark-color: #101010;
 }
 
 * {
   box-sizing: border-box;
+  font-family: sans-serif;
 }
 
 body {
@@ -15,6 +19,6 @@ body {
   padding: 0;
 }
 
-.error{
+.error {
   color: red;
 }

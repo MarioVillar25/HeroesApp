@@ -6,7 +6,9 @@
   ></app-searcher>
 
   <ng-container *ngIf="heroes.length > 0; else cargando">
-    <p>Results: {{ heroes.length }}</p>
+    <p>
+      <strong>{{ heroes.length }} results</strong>
+    </p>
     <span *ngIf="heroes.length === 0" class="error">
       There is no results with "{{ searcher.inputValue }}"
     </span>

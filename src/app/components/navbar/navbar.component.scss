@@ -3,9 +3,10 @@ nav {
   justify-content: space-between;
   align-items: center;
 
-  background-color: black;
+  background-color: var(--main--dark-color);
   color: white;
   padding: 3vh 3vw;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 }
 
 span {

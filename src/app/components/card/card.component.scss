@@ -1,11 +1,49 @@
 .card {
   width: 250px;
   height: 360px;
+  border-radius: 2px;
 
   display: flex;
   flex-direction: column;
   justify-content: center;
-  background-color: black;
+  background-color: var(--main--dark-color);
+  overflow: hidden;
+
+  clip-path: polygon(
+    0 0,
+    100% 0,
+    100% calc(100% - 20px),
+    calc(100% - 20px) 100%,
+    0 100%
+  );
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+
+  .redLine {
+    background-color: #ec1d25;
+    height: 3%;
+  }
+
+  .imageCard {
+    height: 80%;
+  }
+}
+
+.card:hover {
+  width: 250px;
+  height: 360px;
+  border-radius: 2px;
+  clip-path: polygon(
+    0 0,
+    100% 0,
+    100% calc(100% - 20px),
+    calc(100% - 20px) 100%,
+    0 100%
+  );
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: rgba(124, 1, 1, 0.828);
   overflow: hidden;
 
   .imageCard {
@@ -18,7 +56,7 @@ h3 {
 }
 
 .cardText {
-  height: 20%;
+  height: 17%;
   padding: 13px;
   color: white;
   display: flex;

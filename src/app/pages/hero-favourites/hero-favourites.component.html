@@ -7,7 +7,10 @@
     (emisionLikedHeroes)="reloadFavorites($event)"
   ></app-searcher>
 
-  <p>Results: {{ likedHeroes.length }}</p>
+  <p>
+    <strong>{{ likedHeroes.length }} results</strong>
+  </p>
+
   <span *ngIf="likedHeroes.length === 0" class="error">
     "{{ inputValue }}" no lo tienes en tu lista de favoritos
   </span>
