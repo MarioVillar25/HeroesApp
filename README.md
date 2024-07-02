@@ -6,6 +6,7 @@ Este proyecto es una aplicación desarrollada en Angular 17 que proporciona un l
 
 - **Landing Page**: Muestra 50 tarjetas de héroes con información básica.
 - **Información Detallada**: Al hacer clic en una tarjeta, se accede a la información detallada del héroe y a los cómics relacionados.
+- **Likes y Favoritos**: Los usuarios pueden dar "likes" a los héroes y acceder a un listado de héroes favoritos.
 - **Estructura Modular**: La aplicación está organizada en carpetas para facilitar su mantenimiento y escalabilidad.
 
 ## Estructura de Carpetas
@@ -25,14 +26,14 @@ La estructura de carpetas del proyecto es la siguiente:
 
 Para clonar y ejecutar esta aplicación, sigue los siguientes pasos:
 
-1. Clona este repositorio:
+1. Clona este repositorio en una carpeta donde quieras guardar el proyecto:
     ```bash
-    git clone https://github.com/tu-usuario/marvel-heroes-app.git
+    git clone https://github.com/MarioVillar25/HeroesApp.git
     ```
 
 2. Navega al directorio del proyecto:
     ```bash
-    cd marvel-heroes-app
+    cd nomdreDeLaCarpeta
     ```
 
 3. Instala las dependencias del proyecto:
