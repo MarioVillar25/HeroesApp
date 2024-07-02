@@ -1,5 +1,3 @@
-
-
 <div class="heroListContainer">
   <h2>Favoritos</h2>
 
@@ -9,16 +7,14 @@
     (emisionLikedHeroes)="reloadFavorites($event)"
   ></app-searcher>
 
-  <p>Results: {{ heroesLikeados.length }}</p>
+  <p>Results: {{ likedHeroes.length }}</p>
   <span *ngIf="likedHeroes.length === 0" class="error">
-    "{{ inputValue }} no lo tienes en tu lista de favoritos"
+    "{{ inputValue }}" no lo tienes en tu lista de favoritos
   </span>
 </div>
 
 <section>
   <div class="cards-list">
-    <app-card [hero]="hero" *ngFor="let hero of heroesLikeados"></app-card>
+    <app-card [hero]="hero" *ngFor="let hero of likedHeroes"></app-card>
   </div>
 </section>
-
-

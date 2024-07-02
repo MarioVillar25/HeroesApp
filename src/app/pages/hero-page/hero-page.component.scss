@@ -3,6 +3,21 @@ section {
   padding: 0vh 20vw;
 }
 
+.loader-container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+  height: 80vh;
+
+}
+
+.loader{
+  filter: invert(1);
+}
+
+
+
 .heroInfo {
   display: flex;
   background-color: black;

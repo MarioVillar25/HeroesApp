@@ -15,13 +15,20 @@ import { CommonModule } from '@angular/common';
 })
 export class HeroPageComponent implements OnInit {
   public hero!: Heroes;
-  public comics: Comic[] = [];
+  public comics!: Comic[];
 
   constructor(
     private heroesService: HeroesService,
     private activatedRoute: ActivatedRoute,
     private router: Router
   ) {}
+
+  public ngOnInit(): void {
+    this.reclaimHeroById();
+    this.reclaimComicsByHeroId();
+    this.heroesService.loadLocalStorage();
+    //this.checkColorLike();
+  }
 
   //Función para llamar a la info de Hero por Id
   public reclaimHeroById(): void {
@@ -35,29 +42,29 @@ export class HeroPageComponent implements OnInit {
       });
   }
 
+  //Función para llamar a la info del comic por hero Id
+
   public reclaimComicsByHeroId(): void {
     this.activatedRoute.params
       .pipe(switchMap(({ id }) => this.heroesService.getComicsByHeroId(id)))
       .subscribe((comics) => {
-        if (!comics) return this.router.navigate(['/heroes']);
-        //console.log( "comics",comics.data.results);
 
-        return (this.comics = comics.data.results);
+        if(!comics) return;
+
+
+        return (this.comics = comics?.data.results);
       });
   }
+
+  //Función para dar like y dislike
 
   public changeLikedHeroes(): void {
     this.heroesService.changeLikedHeroes(this.hero, this.hero.id);
   }
 
-  public checkColorLike(): boolean {
-   return this.heroesService.checkColorLike(this.hero.id);
-  }
+  //Función para dar cambiar color del corazón del like
 
-  public ngOnInit(): void {
-    this.reclaimHeroById();
-    this.reclaimComicsByHeroId();
-    this.heroesService.loadLocalStorage();
-    this.checkColorLike()
+  public checkColorLike(): boolean {
+    return this.heroesService.checkColorLike(this.hero.id);
   }
 }

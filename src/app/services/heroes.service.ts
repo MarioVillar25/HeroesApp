@@ -3,27 +3,22 @@ import { Character, Heroes } from '../interfaces/character.interface';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { Observable, catchError, of } from 'rxjs';
 import { ComicsData } from '../interfaces/comics.interface';
+import { environments } from '../../environments/environments';
 
 @Injectable({
   providedIn: 'root',
 })
 export class HeroesService {
-  //TODO: meter en environments
-
-  public finalURL: string =
-    'ts=1719221103905&apikey=7b8a712b1fe2407b75c2cf1b7ca3d9b5&hash=04d6f9bd92df8e4f6f1ef343a695d4bf';
-
-  public baseURL: string = 'https://gateway.marvel.com';
-
-  //Estado para los likes
-
-  public likeState: boolean = false;
+  public finalURL: string = environments.FINAL_URL;
+  public baseURL: string = environments.BASE_URL;
 
   //Array de los Heroes likeados.
 
   public likedHeroes: Heroes[] = [];
 
   constructor(private http: HttpClient) {}
+
+  //* FUNCIONES PARA LLAMADAS A LA API
 
   //Para obtener todos los héroes
 
@@ -100,9 +95,11 @@ export class HeroesService {
     }
   }
 
+  //* FUNCIONES PARA EL LOCAL STORAGE
+
   //Load Local Storage
 
-  loadLocalStorage(): void {
+  public loadLocalStorage(): void {
     this.likedHeroes = JSON.parse(localStorage.getItem('LikedHeroes')!);
   }
 }

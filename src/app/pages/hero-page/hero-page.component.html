@@ -1,60 +1,61 @@
-<section *ngIf="hero" class="heroInfo">
-  <img
-    src="{{ hero.thumbnail.path }}.{{ hero.thumbnail.extension }}"
-    alt="image"
-    width="200px"
-    height="200px"
-  />
+<ng-container *ngIf="hero">
+  <section class="heroInfo">
+    <img
+      src="{{ hero.thumbnail.path }}.{{ hero.thumbnail.extension }}"
+      alt="image"
+      width="200px"
+      height="200px"
+    />
 
+    <div class="info">
+      <div class="title">
+        <h2>{{ hero.name }}</h2>
+        <ng-container *ngIf="checkColorLike(); else RedHeartHeroPage">
+          <img
+            (click)="changeLikedHeroes()"
+            src="../../../assets/heart.png"
+            alt=""
+            width="20px"
+          />
+        </ng-container>
 
-  <div class="info">
-    <div class="title">
-      <h2>{{ hero.name }}</h2>
-
-
-      <ng-container *ngIf="checkColorLike();else RedHeartHeroPage">
-        <img
-          (click)="changeLikedHeroes()"
-          src="../../../assets/heart.png"
-          alt=""
-          width="20px"
-        />
-      </ng-container>
-
-
-
-      <ng-template #RedHeartHeroPage>
-        <img
-          (click)="changeLikedHeroes()"
-          src="../../../assets/red_heart.png"
-          alt=""
-          width="20px"
-        />
-      </ng-template>
-
-
-    </div>
-
-    <p>
-      {{ hero.description || "This hero has no description..." }}
-    </p>
-  </div>
-</section>
-
-<section class="comics">
-  <h2>COMICS</h2>
-
-  <div class="carousel">
-    <ul class="image-list">
-      <div *ngFor="let comic of comics" class="image-container">
-        <img
-          src="{{ comic.images[0].path }}.{{ comic.images[0].extension }}"
-          alt="img-1"
-          class="image-item"
-        />
-        <h5>{{ comic.title }}</h5>
-        <h6>{{ comic.dates[0].date | date : "yyyy" }}</h6>
+        <ng-template #RedHeartHeroPage>
+          <img
+            (click)="changeLikedHeroes()"
+            src="../../../assets/red_heart.png"
+            alt=""
+            width="20px"
+          />
+        </ng-template>
       </div>
-    </ul>
-  </div>
-</section>
+
+      <p>
+        {{ hero.description || "This hero has no description..." }}
+      </p>
+    </div>
+  </section>
+
+  <section class="comics">
+    <h2>COMICS</h2>
+
+    <div class="carousel">
+      <ul class="image-list">
+        <ng-container *ngIf="comics">
+          <div *ngFor="let comic of comics" class="image-container">
+            <img
+              [src]="
+                comic.images[0]
+                  ? comic.images[0].path + '.' + comic.images[0].extension
+                  : '../../../assets/broken_image.png'
+              "
+              alt="img-1"
+              class="image-item"
+            />
+            <h5>{{ comic?.title }}</h5>
+            <h6>{{ comic.dates[0].date | date : "yyyy" }}</h6>
+          </div>
+        </ng-container>
+      </ul>
+    </div>
+  </section>
+</ng-container>

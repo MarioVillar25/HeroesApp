@@ -1,29 +1,25 @@
-import {
-  Component,
-  ElementRef,
-  EventEmitter,
-  Output,
-  ViewChild,
-} from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { HeroesService } from '../../services/heroes.service';
 import { Heroes } from '../../interfaces/character.interface';
-import {  Router } from '@angular/router';
+import { Router } from '@angular/router';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-searcher',
   standalone: true,
-  imports: [],
+  imports: [FormsModule],
   templateUrl: './searcher.component.html',
   styleUrl: './searcher.component.scss',
 })
 export class SearcherComponent {
-
-  @ViewChild('txtTagInput')
-  public tagInput!: ElementRef<HTMLInputElement>;
-  //el tagInput siempre va a tener un valor
-
   //Ruta para saber la URL
   public ruta: string = this.router.url;
+
+  //Valor del Input
+
+  public inputValue = '';
+
+  //Outputs:
 
   @Output() public emisionLikedHeroes = new EventEmitter<Heroes[]>();
   @Output() public emisionHeroes = new EventEmitter<Heroes[]>();
@@ -35,7 +31,7 @@ export class SearcherComponent {
 
   public searchHero() {
     //Creamos en newTag en el que almacenaremos el valor del input
-    const newTag = this.tagInput.nativeElement.value;
+    const newTag = this.inputValue;
 
     //Metemos condición: Si el string está vacío
     //Volvemos a llamar a todos los héroes
@@ -54,32 +50,41 @@ export class SearcherComponent {
     }
 
     //reseteamos el valor del input
-    this.tagInput.nativeElement.value = '';
+    this.inputValue = '';
+  }
+
+  //GETTER para likedHeroes del servicio:
+
+  public get heroesLikeados(): Heroes[] {
+    return this.heroesService.likedHeroes;
   }
 
   //Para buscar el héroe favorito
 
   public searchFavouriteHero() {
     //Creamos en newTag en el que almacenaremos el valor del input
-    const newTag = this.tagInput.nativeElement.value;
+    const newTag = this.inputValue;
 
     if (newTag === '') {
       this.emisionLikedHeroes.emit(this.heroesService.likedHeroes);
+
+      //? meter GETTER del servicio?
     } else {
       //Primero hacemos comprobacion de que newTag está en LikedHeroes:
       if (this.checkEqualityName(newTag)) {
         this.heroesService.getHeroByQuery(newTag).subscribe((heroesFilt) => {
           this.emisionHeroes.emit(heroesFilt.data.results);
-          this.emisionValorInput.emit(newTag);
+          //this.emisionValorInput.emit(newTag);
         });
       } else {
         //me tiene que dar error porque ese valor no está en likedHeroes
-        //this.emisionValorInput.emit(newTag);
+        this.emisionValorInput.emit(newTag);
+        this.emisionHeroes.emit([]);
       }
     }
 
     //reseteamos el valor del input
-    this.tagInput.nativeElement.value = '';
+    this.inputValue = '';
   }
 
   //Para comprobar que el valor del input existe en LikedHeroes

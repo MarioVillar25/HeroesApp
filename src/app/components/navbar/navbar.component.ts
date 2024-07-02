@@ -15,7 +15,7 @@ export class NavbarComponent {
 
   //Creamos un Getter para obtener el Length de Liked Heroes
 
-  get likedHeroesLength(): number {
+  public get likedHeroesLength(): number {
     return this.heroesService.likedHeroes.length;
   }
 }
