@@ -4,21 +4,16 @@
   flex-direction: column;
   justify-content: center;
 
-
-  .loader-container{
+  .loader-container {
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 30px;
     height: 80vh;
-
   }
-
-
-
 }
 
-.loader{
+.loader {
   filter: invert(1);
 }
 

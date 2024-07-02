@@ -48,9 +48,7 @@ export class HeroPageComponent implements OnInit {
     this.activatedRoute.params
       .pipe(switchMap(({ id }) => this.heroesService.getComicsByHeroId(id)))
       .subscribe((comics) => {
-
-        if(!comics) return;
-
+        if (!comics) return;
 
         return (this.comics = comics?.data.results);
       });

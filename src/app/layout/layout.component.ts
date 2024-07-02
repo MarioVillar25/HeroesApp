@@ -8,8 +8,6 @@ import { SearcherComponent } from '../components/searcher/searcher.component';
   standalone: true,
   imports: [RouterOutlet, NavbarComponent, SearcherComponent],
   templateUrl: './layout.component.html',
-  styleUrl: './layout.component.scss'
+  styleUrl: './layout.component.scss',
 })
-export class LayoutComponent {
-
-}
+export class LayoutComponent {}

@@ -2,7 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { CardComponent } from '../../components/card/card.component';
 import { HeroesService } from '../../services/heroes.service';
 import { HttpClientModule } from '@angular/common/http';
-import {  Heroes } from '../../interfaces/character.interface';
+import { Heroes } from '../../interfaces/character.interface';
 import { CommonModule } from '@angular/common';
 import { SearcherComponent } from '../../components/searcher/searcher.component';
 
@@ -14,9 +14,8 @@ import { SearcherComponent } from '../../components/searcher/searcher.component'
   styleUrl: './hero-list.component.scss',
 })
 export class HeroListComponent implements OnInit {
-
-    @ViewChild('searcher')
-    public searcher?: SearcherComponent;
+  @ViewChild('searcher')
+  public searcher?: SearcherComponent;
 
   public heroes: Heroes[] = [];
   public inputValue: string = '';
@@ -26,7 +25,7 @@ export class HeroListComponent implements OnInit {
   public ngOnInit(): void {
     this.getAllHeroes();
     this.heroesService.loadLocalStorage();
-    this.searcher?.inputValue
+    this.searcher?.inputValue;
   }
 
   //Para obtener TODOS los héroes

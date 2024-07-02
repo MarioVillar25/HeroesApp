@@ -1,8 +1,4 @@
-import {
-  Component,
-  Input,
-  OnInit,
-} from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Heroes } from '../../interfaces/character.interface';
 import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';

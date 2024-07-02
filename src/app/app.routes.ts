@@ -28,8 +28,9 @@ export const routes: Routes = [
           ),
       },
       {
-        path: '**', redirectTo:'heroes'
-      }
+        path: '**',
+        redirectTo: 'heroes',
+      },
     ],
   },
 ];

@@ -1,9 +1,9 @@
 <ng-container *ngIf="hero">
   <section class="heroInfo">
-    <img class="heroImage"
+    <img
+      class="heroImage"
       src="{{ hero.thumbnail.path }}.{{ hero.thumbnail.extension }}"
       alt="image"
-
     />
 
     <div class="info">
@@ -36,7 +36,7 @@
 
   <section class="comics">
     <h2>COMICS</h2>
-    <hr>
+    <hr />
     <div class="carousel">
       <ul class="image-list">
         <ng-container *ngIf="comics">
