@@ -100,6 +100,6 @@ export class HeroesService {
   //Load Local Storage
 
   public loadLocalStorage(): void {
-    this.likedHeroes = JSON.parse(localStorage.getItem('LikedHeroes')!);
+    this.likedHeroes = JSON.parse(localStorage.getItem('LikedHeroes')!) ? JSON.parse(localStorage.getItem('LikedHeroes')!) : [];
   }
 }

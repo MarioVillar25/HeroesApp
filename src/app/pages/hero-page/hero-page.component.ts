@@ -27,7 +27,6 @@ export class HeroPageComponent implements OnInit {
     this.reclaimHeroById();
     this.reclaimComicsByHeroId();
     this.heroesService.loadLocalStorage();
-    //this.checkColorLike();
   }
 
   //Función para llamar a la info de Hero por Id
